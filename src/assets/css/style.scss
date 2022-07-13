@@ -1,14 +1,51 @@
 body {
+  font-family: 'Inter', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #E5E5E5;
 
 }
 
-.wrapper{
+.wrapper {
   background: #FFFFFF;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
   border-radius: 20px;
   max-width: 1080px;
   margin: 50px auto 0;
 }
+
+//----------- HEADER ----------------
+
+header{
+  padding: 40px;
+  border-bottom: 1px solid #EAEAEA;
+
+  .header-info {
+    margin-left: 15px;
+
+    h3, p {
+      margin: 0;
+    }
+  }
+
+  .header-right{
+    li{
+      margin-right: 20px;
+
+      img{
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+//----------- CONTENT ----------------
+
+.content{
+  padding: 40px;
+
+  h1{
+    margin: 0;
+  }
+}
+
