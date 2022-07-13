@@ -1,11 +1,11 @@
-*{
+* {
   font-family: 'Inter', sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #E5E5E5;
+  background-color: #F7FBFE;
 }
 
 .wrapper {
@@ -15,6 +15,138 @@ body {
   max-width: 1080px;
   margin: 50px auto 0;
 }
+
+//----------- DRAWER ----------------
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+
+  .drawer {
+    position: absolute;
+    width: 400px;
+    right: 0;
+    height: 100%;
+    background: #FFFFFF;
+    box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+
+    h3 {
+      margin: 0 0 30px;
+    }
+
+    .items {
+      flex: 1;
+
+      .cart-item {
+        background: #FFFFFF;
+        border: 1px solid #F3F3F3;
+        border-radius: 20px;
+        padding: 20px 20px 20px;
+        margin-bottom: 20px;
+
+        .cart-text {
+          max-width: 150px;
+
+          p {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 17px;
+            color: #000000;
+            margin: 0 0 8px;
+          }
+
+          span {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 17px;
+            color: #000000;
+          }
+        }
+
+
+        button {
+          border: none;
+          padding: 0;
+          margin: 0;
+          background: transparent;
+          opacity: 0.6;
+          transition: opacity 0.2s ease-in-out;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .drawer-bottom {
+      ul {
+        margin-bottom: 24px;
+
+        li {
+          margin: 0 0 15px;
+        }
+
+        p {
+          margin: 0;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 19px;
+          color: #000000;
+        }
+
+        b {
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 19px;
+          color: #000000;
+        }
+
+        div {
+          flex: 1;
+          border-bottom: 1px dashed gray;
+          position: relative;
+          top: -4px;
+          margin: 0 5px;
+        }
+      }
+
+      button {
+        background: #9DD558;
+        border-radius: 18px;
+        padding: 18px;
+        border: none;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        cursor: pointer;
+        transition: background 0.2s ease-in-out;
+
+        &:hover{
+          background: #87bd48;
+        }
+
+        span {
+          margin-right: 20px;
+        }
+      }
+    }
+
+  }
+}
+
 
 //----------- HEADER ----------------
 
@@ -28,7 +160,8 @@ header {
     h3, p {
       margin: 0;
     }
-    p{
+
+    p {
       font-style: normal;
       font-weight: 400;
       font-size: 14px;
@@ -57,13 +190,13 @@ header {
     margin: 0;
   }
 
-  .search-block{
+  .search-block {
     border: 1px solid #F3F3F3;
     border-radius: 10px;
     padding: 14px 18px;
     max-width: 250px;
 
-    input{
+    input {
       border: none;
       margin-left: 12px;
       font-size: 16px;
@@ -82,17 +215,17 @@ header {
       margin-right: 30px;
       transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 
-      &:hover{
+      &:hover {
         box-shadow: 0 20px 35px rgba(0, 0, 0, 0.06);
         transform: translateY(-5px);
       }
 
-      .favourite{
+      .favourite {
         position: absolute;
         cursor: pointer;
       }
 
-      h4{
+      h4 {
         font-style: normal;
         font-weight: 400;
         font-size: 14px;
@@ -102,8 +235,8 @@ header {
         margin: 14px 0;
       }
 
-      .card-price{
-        p{
+      .card-price {
+        p {
           font-style: normal;
           font-weight: 500;
           font-size: 11px;
@@ -113,7 +246,7 @@ header {
           margin: 0;
         }
 
-        span{
+        span {
           font-style: normal;
           font-weight: 700;
           font-size: 14px;
@@ -122,12 +255,11 @@ header {
         }
       }
 
-      button{
+      button {
         border: none;
         padding: 0;
         margin: 0;
         background: transparent;
-
       }
     }
   }
