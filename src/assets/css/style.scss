@@ -16,7 +16,7 @@ body {
 
 //----------- HEADER ----------------
 
-header{
+header {
   padding: 40px;
   border-bottom: 1px solid #EAEAEA;
 
@@ -26,13 +26,20 @@ header{
     h3, p {
       margin: 0;
     }
+    p{
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #9D9D9D;
+    }
   }
 
-  .header-right{
-    li{
+  .header-right {
+    li {
       margin-right: 20px;
 
-      img{
+      img {
         margin-right: 10px;
       }
     }
@@ -41,11 +48,62 @@ header{
 
 //----------- CONTENT ----------------
 
-.content{
+.content {
   padding: 40px;
 
-  h1{
+  h1 {
     margin: 0;
   }
+
+  .cards {
+    margin-top: 40px;
+
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #F3F3F3;
+      border-radius: 40px;
+      max-width: 220px;
+      padding: 20px 30px 35px;
+      margin-right: 30px;
+
+      h4{
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        color: #000000;
+        max-width: 150px;
+        margin: 14px 0;
+      }
+
+      .card-price{
+        p{
+          font-style: normal;
+          font-weight: 500;
+          font-size: 11px;
+          line-height: 13px;
+          text-transform: uppercase;
+          color: #BDBDBD;
+          margin: 0;
+        }
+
+        span{
+          font-style: normal;
+          font-weight: 700;
+          font-size: 14px;
+          line-height: 17px;
+          color: #000000;
+        }
+      }
+
+      button{
+        background: #FFFFFF;
+        border: 1px solid #F2F2F2;
+        border-radius: 8px;
+        padding: 10px;
+      }
+    }
+  }
+
 }
 
