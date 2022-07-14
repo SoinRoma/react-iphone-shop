@@ -7,7 +7,7 @@ const Card = (props) => {
             <div className="favourite">
                 <img src="./svg/heard-unlike.svg" alt="unlike"/>
             </div>
-            <img src="./images/iphones/1.png" alt="sneaker1" width="133" />
+            <img src={props.imageUrl} alt="sneaker1" width="133" />
             <h4>{props.title}</h4>
             <div className="d-flex justify-between align-center">
                 <div className="card-price">

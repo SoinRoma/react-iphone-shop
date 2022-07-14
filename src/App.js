@@ -6,10 +6,10 @@ import Cart from "./components/Cart";
 function App() {
 
     const arr = [
-        {name: 'Iphone 13 Pro Max', price: '12000'},
-        {name: 'Iphone 13 Pro', price: '11000'},
-        {name: 'Iphone 13', price: '10000'},
-        {name: 'Iphone 13 Mini', price: '9000'},
+        {name: 'Iphone 13 Pro Max', price: '12000', imageUrl: './images/iphones/1.png'},
+        {name: 'Iphone 13 Pro', price: '11000', imageUrl: './images/iphones/2.png'},
+        {name: 'Iphone 13', price: '10000', imageUrl: './images/iphones/3.png'},
+        {name: 'Iphone 13 Mini', price: '9000', imageUrl: './images/iphones/4.png'},
     ];
 
     return (
@@ -28,7 +28,7 @@ function App() {
                 </div>
                 <div className="d-flex flex-wrap align-center cards">
                     {arr.map((value, index) =>
-                        <Card title={value.name} price={value.price} key={index} />
+                        <Card title={value.name} price={value.price} imageUrl={value.imageUrl} key={index} />
                     )}
 
                 </div>
