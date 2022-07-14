@@ -4,6 +4,14 @@ import Header from "./components/Header";
 import Cart from "./components/Cart";
 
 function App() {
+
+    const arr = [
+        {name: 'Iphone 13 Pro Max', price: '12000'},
+        {name: 'Iphone 13 Pro', price: '11000'},
+        {name: 'Iphone 13', price: '10000'},
+        {name: 'Iphone 13 Mini', price: '9000'},
+    ];
+
     return (
         <div className="wrapper clear">
             <Cart/>
@@ -19,7 +27,10 @@ function App() {
                     </div>
                 </div>
                 <div className="d-flex flex-wrap align-center cards">
-                    <Card/>
+                    {arr.map((value, index) =>
+                        <Card title={value.name} price={value.price} key={index} />
+                    )}
+
                 </div>
             </section>
         </div>
