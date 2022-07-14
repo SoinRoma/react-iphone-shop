@@ -12,14 +12,14 @@ const Cart = () => {
                 </div>
                 <div className="items">
                     <div className="cart-item d-flex justify-between align-center">
-                        <img src="./images/sneakers/1.png" alt="sneakers" width="70" height="70"/>
+                        <img src="./images/iphones/1.png" alt="sneakers" width="70"/>
                         <div className="cart-text">
                             <p>
-                                Мужские Кроссовки Nike Air Max 270
+                                Iphone 13 Pro Max
                             </p>
                             <span>
                             12 999 руб.
-                        </span>
+                            </span>
                         </div>
                         <button className="cu-p">
                             <img src="./svg/close.svg" alt="close"/>

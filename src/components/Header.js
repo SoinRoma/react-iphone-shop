@@ -8,8 +8,8 @@ const Header = () => {
                     <img src="./images/logo.png" alt="logo" width="40" height="40"/>
                 </a>
                 <div className="header-info">
-                    <h3 className="text-uppercase">Sneakers Shop</h3>
-                    <p>Магазин лучших кроссовок</p>
+                    <h3 className="text-uppercase">Iphone Shop</h3>
+                    <p>Магазин лучших смартфонов</p>
                 </div>
             </div>
             <ul className="header-right d-flex">

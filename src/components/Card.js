@@ -6,8 +6,8 @@ const Card = () => {
             <div className="favourite">
                 <img src="./svg/heard-unlike.svg" alt="unlike"/>
             </div>
-            <img src="./images/sneakers/1.png" alt="sneaker1" width="133" height="112"/>
-            <h4>Мужские Кроссовки Nike Blazer Mid Suede</h4>
+            <img src="./images/iphones/1.png" alt="sneaker1" width="133" />
+            <h4>Iphone 13 Pro Max</h4>
             <div className="d-flex justify-between align-center">
                 <div className="card-price">
                     <p>Цена:</p>
