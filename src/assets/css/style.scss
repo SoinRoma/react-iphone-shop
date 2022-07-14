@@ -36,12 +36,32 @@ body {
     box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
     padding: 30px;
 
-    h3 {
-      margin: 0 0 30px;
+    .drawer-top {
+      margin-bottom: 30px;
+
+      h3 {
+        margin: 0;
+      }
+
+      button {
+        border: none;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        opacity: 0.6;
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
     }
+
 
     .items {
       flex: 1;
+      overflow: auto;
+      margin-bottom: 40px;
 
       .cart-item {
         background: #FFFFFF;
@@ -134,8 +154,13 @@ body {
         cursor: pointer;
         transition: background 0.2s ease-in-out;
 
-        &:hover{
+        &:hover {
           background: #87bd48;
+
+          img {
+            transform: translateX(10px);
+            transition: translateX 0.2s ease-in-out;
+          }
         }
 
         span {
