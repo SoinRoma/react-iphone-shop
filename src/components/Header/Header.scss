@@ -1,0 +1,30 @@
+header {
+  padding: 40px;
+  border-bottom: 1px solid #EAEAEA;
+
+  .header-info {
+    margin-left: 15px;
+
+    h3, p {
+      margin: 0;
+    }
+
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #9D9D9D;
+    }
+  }
+
+  .header-right {
+    li {
+      margin-right: 20px;
+
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+}

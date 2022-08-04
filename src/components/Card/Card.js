@@ -1,7 +1,12 @@
 import React from 'react';
+import './Card.scss';
 
 const Card = (props) => {
-    console.log('card');
+
+    const onClickButtonPlus = () => {
+        alert(props.title)
+    };
+
     return (
         <div className="card">
             <div className="favourite">
@@ -14,7 +19,7 @@ const Card = (props) => {
                     <p>Цена:</p>
                     <span>{props.price} руб.</span>
                 </div>
-                <button className="cu-p">
+                <button className="cu-p" onClick={onClickButtonPlus}>
                     <img src="./svg/button-uncheck.svg" alt="uncheck" width="32" height="32"/>
                 </button>
             </div>
