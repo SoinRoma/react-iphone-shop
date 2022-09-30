@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/react-iphone-shop/static/css/main.7e986e68.css",
+    "main.js": "/react-iphone-shop/static/js/main.9e981500.js",
+    "index.html": "/react-iphone-shop/index.html",
+    "main.7e986e68.css.map": "/react-iphone-shop/static/css/main.7e986e68.css.map",
+    "main.9e981500.js.map": "/react-iphone-shop/static/js/main.9e981500.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e986e68.css",
+    "static/js/main.9e981500.js"
+  ]
+}
