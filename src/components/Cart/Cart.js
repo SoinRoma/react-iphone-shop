@@ -1,7 +1,10 @@
 import React from 'react';
 import './Cart.scss';
 
-const Cart = ({setIsCartOpen}) => {
+const Cart = ({cartItems=[], setCartItems, setIsCartOpen}) => {
+    const deleteItem = (id) => {
+        setCartItems(cartItems.filter(item => item.id !== id))
+    }
     return (
         <div className="overlay">
             <div className="drawer d-flex flex-column">
@@ -12,20 +15,18 @@ const Cart = ({setIsCartOpen}) => {
                     </button>
                 </div>
                 <div className="items">
-                    <div className="cart-item d-flex justify-between align-center">
-                        <img src="./images/iphones/1.png" alt="sneakers" width="70"/>
-                        <div className="cart-text">
-                            <p>
-                                Iphone 13 Pro Max
-                            </p>
-                            <span>
-                            12 999 руб.
-                            </span>
-                        </div>
-                        <button className="cu-p">
-                            <img src="./svg/close.svg" alt="close"/>
-                        </button>
-                    </div>
+                    {cartItems.map(item =>
+                      <div className="cart-item d-flex justify-between align-center" key={item.id}>
+                          <img src={item.imageUrl} alt="sneakers" width="70"/>
+                          <div className="cart-text">
+                              <p> {item.name}</p>
+                              <span>{item.price} руб.</span>
+                          </div>
+                          <button className="cu-p" onClick={()=> deleteItem(item.id)}>
+                              <img src="./svg/close.svg" alt="close"/>
+                          </button>
+                      </div>
+                    )}
                 </div>
                 <div className="drawer-bottom">
                     <ul>

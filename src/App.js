@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 
 function App() {
     const [items, setItems] = useState([])
+    const [cartItems, setCartItems] = useState([])
     const [isCartOpen, setIsCartOpen] = useState(false)
 
     const getItems = async () => {
@@ -20,7 +21,7 @@ function App() {
 
     return (
         <div className="wrapper clear">
-            {isCartOpen && <Cart setIsCartOpen={setIsCartOpen}/>}
+            {isCartOpen && <Cart setIsCartOpen={setIsCartOpen} cartItems={cartItems} setCartItems={setCartItems}/>}
             <Header setIsCartOpen={setIsCartOpen}/>
             <section className="content">
                 <div className="d-flex justify-between align-center">
@@ -34,7 +35,7 @@ function App() {
                 </div>
                 <div className="d-flex flex-wrap align-center cards">
                     {items.map((item) =>
-                        <Card title={item.name} price={item.price} imageUrl={item.imageUrl} key={item.id} />
+                        <Card item={item} key={item.id} cartItems={cartItems} setCartItems={setCartItems} />
                     )}
                 </div>
             </section>
