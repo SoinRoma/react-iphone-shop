@@ -1,21 +1,27 @@
 import './style.scss';
+import axios from 'axios'
 import Card from "./components/Card/Card";
 import Header from "./components/Header/Header";
 import Cart from "./components/Cart/Cart";
+import {useEffect, useState} from "react";
 
 function App() {
+    const [items, setItems] = useState([])
+    const [isCartOpen, setIsCartOpen] = useState(false)
 
-    const arr = [
-        {name: 'Iphone 13 Pro Max', price: '12000', imageUrl: './images/iphones/1.png'},
-        {name: 'Iphone 13 Pro', price: '11000', imageUrl: './images/iphones/2.png'},
-        {name: 'Iphone 13', price: '10000', imageUrl: './images/iphones/3.png'},
-        {name: 'Iphone 13 Mini', price: '9000', imageUrl: './images/iphones/4.png'},
-    ];
+    const getItems = async () => {
+        const response = await axios.get('https://655de51b9f1e1093c59a1965.mockapi.io/api/items')
+        setItems(response.data)
+    }
+
+    useEffect(()=>{
+        getItems()
+    }, [])
 
     return (
         <div className="wrapper clear">
-            <Cart/>
-            <Header/>
+            {isCartOpen && <Cart setIsCartOpen={setIsCartOpen}/>}
+            <Header setIsCartOpen={setIsCartOpen}/>
             <section className="content">
                 <div className="d-flex justify-between align-center">
                     <h1>Все смартфоны</h1>
@@ -27,10 +33,9 @@ function App() {
                     </div>
                 </div>
                 <div className="d-flex flex-wrap align-center cards">
-                    {arr.map((value, index) =>
-                        <Card title={value.name} price={value.price} imageUrl={value.imageUrl} key={index} />
+                    {items.map((item) =>
+                        <Card title={item.name} price={item.price} imageUrl={item.imageUrl} key={item.id} />
                     )}
-
                 </div>
             </section>
         </div>

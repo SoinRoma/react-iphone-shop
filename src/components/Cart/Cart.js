@@ -1,13 +1,13 @@
 import React from 'react';
 import './Cart.scss';
 
-const Cart = () => {
+const Cart = ({setIsCartOpen}) => {
     return (
-        <div className="d-none overlay">
+        <div className="overlay">
             <div className="drawer d-flex flex-column">
                 <div className="drawer-top d-flex align-center justify-between">
                     <h3>Корзина</h3>
-                    <button className="cu-p">
+                    <button className="cu-p" onClick={()=> setIsCartOpen(false)}>
                         <img src="./svg/close.svg" alt="close"/>
                     </button>
                 </div>

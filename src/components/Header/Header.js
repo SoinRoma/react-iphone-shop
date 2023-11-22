@@ -1,7 +1,7 @@
 import React from 'react';
 import './Header.scss';
 
-const Header = () => {
+const Header = ({setIsCartOpen}) => {
     return (
         <header className="d-flex justify-between align-center">
             <div className="d-flex align-center">
@@ -14,10 +14,8 @@ const Header = () => {
                 </div>
             </div>
             <ul className="header-right d-flex">
-                <li className="d-flex align-center">
-                    <a href="/">
-                        <img src="./svg/cart.svg" alt="cart"/>
-                    </a>
+                <li className="d-flex align-center cu-p" onClick={()=> setIsCartOpen(true)}>
+                    <img src="./svg/cart.svg" alt="cart"/>
                     <span>1205 руб.</span>
                 </li>
                 <li className="d-flex align-center">
