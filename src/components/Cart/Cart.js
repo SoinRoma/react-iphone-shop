@@ -1,8 +1,10 @@
 import React from 'react';
 import './Cart.scss';
+import axios from "axios";
 
 const Cart = ({cartItems = [], setCartItems, setIsCartOpen}) => {
   const deleteItem = (id) => {
+    axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)
     setCartItems(cartItems.filter(item => item.id !== id))
   }
   return (

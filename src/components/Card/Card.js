@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Card.scss';
+import axios from "axios";
 
 const Card = ({item, setCartItems}) => {
 
@@ -8,8 +9,10 @@ const Card = ({item, setCartItems}) => {
   const handle = () => {
     setIsAdded((prevValue) => {
       if (prevValue) {
+        axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${item.id}`)
         setCartItems((prev) => [...prev.filter(i => i.id !== item.id)])
       } else {
+        axios.post('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart', item)
         setCartItems((prev) => [...new Set([...prev, item])])
       }
       return !prevValue;

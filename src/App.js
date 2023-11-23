@@ -16,8 +16,14 @@ function App() {
     setItems(response.data)
   }
 
+  const getCartItems = async () => {
+    const response = await axios.get('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart')
+    setCartItems(response.data)
+  }
+
   useEffect(() => {
     getItems()
+    getCartItems()
   }, [])
 
   return (
