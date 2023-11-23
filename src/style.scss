@@ -24,28 +24,62 @@ body {
   h1 {
     margin: 0;
   }
+}
 
-  .search-block {
-    border: 1px solid #F3F3F3;
-    border-radius: 10px;
-    padding: 14px 18px;
-    max-width: 250px;
-    position: relative;
+.cartEmpty {
+  text-align: center;
 
-    .clear {
-      position: absolute;
-      top: 14px;
-      width: 18px;
-      height: 18px;
-      right: 15px;
+  p {
+    width: 280px;
+    line-height: 24px;
+  }
+
+  .greenButton {
+    width: 245px;
+    margin-top: 20px;
+    background: #9DD558;
+    border-radius: 18px;
+    padding: 18px;
+    border: none;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      img {
+        transform: rotate(180deg) translateX(3px);
+      }
     }
 
-    input {
-      border: none;
-      margin-left: 12px;
-      font-size: 16px;
-      width: 100%;
+    img {
+      position: relative;
+      top: 1px;
+      transform: rotate(180deg);
+      margin-right: 15px;
+      transition: transform 0.15s ease-in-out;
     }
+  }
+}
+
+.search-block {
+  border: 1px solid #F3F3F3;
+  border-radius: 10px;
+  padding: 14px 18px;
+  max-width: 250px;
+  position: relative;
+
+  .clear {
+    position: absolute;
+    top: 14px;
+    width: 18px;
+    height: 18px;
+    right: 15px;
+  }
+
+  input {
+    border: none;
+    margin-left: 12px;
+    font-size: 16px;
+    width: 100%;
   }
 }
 
