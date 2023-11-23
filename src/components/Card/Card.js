@@ -1,17 +1,16 @@
 import React, {useState} from 'react';
 import './Card.scss';
 
-const Card = ({item, cartItems, setCartItems}) => {
+const Card = ({item, setCartItems}) => {
 
   const [isAdded, setIsAdded] = useState(false)
 
   const handle = () => {
     setIsAdded((prevValue) => {
       if (prevValue) {
-        setCartItems([...cartItems.filter(i => i.id !== item.id)])
+        setCartItems((prev) => [...prev.filter(i => i.id !== item.id)])
       } else {
-        const setArray = new Set([...cartItems, item])
-        setCartItems([...setArray])
+        setCartItems((prev) => [...new Set([...prev, item])])
       }
       return !prevValue;
     })

@@ -40,7 +40,7 @@ function App() {
         </div>
         <div className="d-flex flex-wrap align-center cards">
           {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((item) =>
-            <Card item={item} key={item.id} cartItems={cartItems} setCartItems={setCartItems}/>
+            <Card item={item} key={item.id} setCartItems={setCartItems}/>
           )}
         </div>
       </section>
