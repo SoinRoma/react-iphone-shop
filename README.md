@@ -19,7 +19,10 @@ npm install
 npm start
 ```
 
-4. Деплой приложения в Github Pages
+4. Деплой приложения в Github Pages.
+Нужно обязательно указать в `package.json` в ключ homepage путь до репозитория, например,
+`https://soinroma.github.io/react-iphone-shop/`
+   
 ```
 npm run deploy
 ```
