@@ -8,6 +8,7 @@ import {useEffect, useState} from "react";
 function App() {
   const [items, setItems] = useState([])
   const [cartItems, setCartItems] = useState([])
+  const [favorites, setFavorites] = useState([])
   const [search, setSearch] = useState('')
   const [isCartOpen, setIsCartOpen] = useState(false)
 
@@ -38,8 +39,8 @@ function App() {
     }
   }
 
-  const isItemAdded = (item) => {
-    return cartItems.find((i) => +i.parentId === +item.id)
+  const isItemAdded = (obj) => {
+    return cartItems.find((item) => +item.parentId === +obj.id)
   }
 
   const deleteCartItem = async (id) => {
@@ -50,6 +51,18 @@ function App() {
   const getCartItems = async () => {
     const response = await axios.get('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart')
     setCartItems(response.data)
+  }
+
+  const toggleFavorite = (obj) => {
+    if (favorites.find((i) => +i.id === +obj.id)) {
+      setFavorites((prev) => [...prev.filter(item => item.id !== obj.id)])
+    } else {
+      setFavorites((prev) => [...prev, obj])
+    }
+  }
+
+  const isItemFavorite = (obj) => {
+    return favorites.find((item) => +item.id === +obj.id)
   }
 
   useEffect(() => {
@@ -81,6 +94,8 @@ function App() {
               key={item.id}
               item={item}
               isItemAdded={isItemAdded}
+              isItemFavorite={isItemFavorite}
+              toggleFavorite={toggleFavorite}
               addCartItem={addCartItem}/>
           )}
         </div>
