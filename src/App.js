@@ -13,11 +13,13 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [search, setSearch] = useState('')
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const getItems = async () => {
     try {
       const response = await axios.get('https://655de51b9f1e1093c59a1965.mockapi.io/api/items')
       setItems(response.data)
+      setIsLoading(false)
     } catch (e) {
       alert(`Не удалось получить данные товаров. Ошибка: ${e}`)
     }
@@ -103,6 +105,7 @@ function App() {
           isItemFavorite={isItemFavorite}
           addCartItem={addCartItem}
           toggleFavorite={toggleFavorite}
+          isLoading={isLoading}
           search={search}
           setSearch={setSearch}/>}/>
         <Route path="/favorites" element={<Favorites

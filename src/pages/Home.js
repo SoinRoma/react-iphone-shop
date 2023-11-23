@@ -1,6 +1,32 @@
 import Card from "../components/Card/Card";
 
-function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
+function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartItem, toggleFavorite, isLoading}) {
+
+  const renderItems = () => {
+    const filteredItems = items.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
+    if (isLoading) {
+      return [...Array(8)].map((item, index) => (
+        <Card
+          key={index}
+          item={item}
+          isLoading={isLoading}
+          />
+      ))
+    } else {
+      return filteredItems.map((item) => (
+        <Card
+          key={item.id}
+          item={item}
+          isLoading={isLoading}
+          isItemAdded={isItemAdded}
+          isItemFavorite={isItemFavorite}
+          toggleFavorite={toggleFavorite}
+          addCartItem={addCartItem}/>
+      ))
+    }
+
+  }
+
   return (
     <section className="content">
       <div className="d-flex justify-between align-center">
@@ -17,15 +43,7 @@ function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartIte
         </div>
       </div>
       <div className="d-flex flex-wrap align-center cards">
-        {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((item) =>
-          <Card
-            key={item.id}
-            item={item}
-            isItemAdded={isItemAdded}
-            isItemFavorite={isItemFavorite}
-            toggleFavorite={toggleFavorite}
-            addCartItem={addCartItem}/>
-        )}
+        {renderItems()}
       </div>
     </section>
   );
