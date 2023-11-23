@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-iphone-shop/static/css/main.9613fb14.css",
-    "main.js": "/react-iphone-shop/static/js/main.18ac7261.js",
+    "main.css": "/react-iphone-shop/static/css/main.a9bfee6e.css",
+    "main.js": "/react-iphone-shop/static/js/main.b6d3940e.js",
     "index.html": "/react-iphone-shop/index.html",
-    "main.9613fb14.css.map": "/react-iphone-shop/static/css/main.9613fb14.css.map",
-    "main.18ac7261.js.map": "/react-iphone-shop/static/js/main.18ac7261.js.map"
+    "main.a9bfee6e.css.map": "/react-iphone-shop/static/css/main.a9bfee6e.css.map",
+    "main.b6d3940e.js.map": "/react-iphone-shop/static/js/main.b6d3940e.js.map"
   },
   "entrypoints": [
-    "static/css/main.9613fb14.css",
-    "static/js/main.18ac7261.js"
+    "static/css/main.a9bfee6e.css",
+    "static/js/main.b6d3940e.js"
   ]
 }
