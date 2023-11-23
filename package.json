@@ -1,8 +1,8 @@
 {
-  "name": "react-sneaker-shop",
+  "name": "react-iphone-shop",
   "version": "1.0.0",
   "private": true,
-  "homepage": "",
+  "homepage": "https://soinroma.github.io/react-iphone-shop/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
