@@ -1,9 +1,11 @@
 import './style.scss';
 import axios from 'axios'
-import Card from "./components/Card/Card";
+import {Routes, Route} from 'react-router-dom'
 import Header from "./components/Header/Header";
 import Cart from "./components/Cart/Cart";
 import {useEffect, useState} from "react";
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
 
 function App() {
   const [items, setItems] = useState([])
@@ -74,32 +76,23 @@ function App() {
     <div className="wrapper clear">
       {isCartOpen && <Cart cartItems={cartItems} setIsCartOpen={setIsCartOpen} deleteCartItem={deleteCartItem}/>}
       <Header setIsCartOpen={setIsCartOpen}/>
-      <section className="content">
-        <div className="d-flex justify-between align-center">
-          <h1>{search ? `Поиск по запросу: ${search}` : 'Все смартфоны'}</h1>
-          <div className="search-block d-flex align-center">
-            <label htmlFor="search-input" className="d-flex align-center cu-p">
-              <img src="./svg/search.svg" alt="search"/>
-            </label>
-            {search &&
-            <img src="./svg/close.svg" alt="close" className="clear cu-p" onClick={() => setSearch('')}/>
-            }
-            <input type="text" placeholder="Поиск..." id="search-input" value={search}
-                   onChange={(e) => setSearch(e.target.value)}/>
-          </div>
-        </div>
-        <div className="d-flex flex-wrap align-center cards">
-          {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((item) =>
-            <Card
-              key={item.id}
-              item={item}
-              isItemAdded={isItemAdded}
-              isItemFavorite={isItemFavorite}
-              toggleFavorite={toggleFavorite}
-              addCartItem={addCartItem}/>
-          )}
-        </div>
-      </section>
+      <Routes>
+        <Route path="/" element={<Home
+          items={items}
+          isItemAdded={isItemAdded}
+          isItemFavorite={isItemFavorite}
+          addCartItem={addCartItem}
+          toggleFavorite={toggleFavorite}
+          search={search}
+          setSearch={setSearch}/>}/>
+        <Route path="/favorites" element={<Favorites
+          favorites={favorites}
+          isItemAdded={isItemAdded}
+          isItemFavorite={isItemFavorite}
+          addCartItem={addCartItem}
+          toggleFavorite={toggleFavorite}
+        />}/>
+      </Routes>
     </div>
   );
 }
