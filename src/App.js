@@ -16,10 +16,6 @@ function App() {
     setItems(response.data)
   }
 
-  const searchItems = (value) => {
-    setSearch(value)
-  }
-
   useEffect(() => {
     getItems()
   }, [])
@@ -39,7 +35,7 @@ function App() {
             <img src="./svg/close.svg" alt="close" className="clear cu-p" onClick={() => setSearch('')}/>
             }
             <input type="text" placeholder="Поиск..." id="search-input" value={search}
-                   onChange={(e) => searchItems(e.target.value)}/>
+                   onChange={(e) => setSearch(e.target.value)}/>
           </div>
         </div>
         <div className="d-flex flex-wrap align-center cards">
