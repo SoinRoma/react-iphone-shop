@@ -1,12 +1,8 @@
 import React from 'react';
 import './Cart.scss';
-import axios from "axios";
 
-const Cart = ({cartItems = [], setCartItems, setIsCartOpen}) => {
-  const deleteItem = (id) => {
-    axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)
-    setCartItems(cartItems.filter(item => item.id !== id))
-  }
+const Cart = ({cartItems, setIsCartOpen, deleteCartItem}) => {
+
   return (
     <div className="overlay">
       <div className="drawer d-flex flex-column">
@@ -26,7 +22,7 @@ const Cart = ({cartItems = [], setCartItems, setIsCartOpen}) => {
                       <p> {item.name}</p>
                       <span>{item.price} руб.</span>
                     </div>
-                    <button className="cu-p" onClick={() => deleteItem(item.id)}>
+                    <button className="cu-p" onClick={() => deleteCartItem(item.id)}>
                       <img src="./svg/close.svg" alt="close"/>
                     </button>
                   </div>)}

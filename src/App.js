@@ -16,6 +16,37 @@ function App() {
     setItems(response.data)
   }
 
+  const addCartItem = async (obj) => {
+    const findItem = cartItems.find((item) => +item.parentId === +obj.id);
+    if (findItem) {
+      setCartItems((prev) => prev.filter((item) => +item.parentId !== +obj.id));
+      await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${findItem.id}`);
+    } else {
+      setCartItems((prev) => [...prev, obj]);
+      const {data} = await axios.post('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart', obj)
+      setCartItems((prev) =>
+        prev.map((item) => {
+          if (item.parentId === data.parentId) {
+            return {
+              ...item,
+              id: data.id,
+            };
+          }
+          return item;
+        })
+      );
+    }
+  }
+
+  const isItemAdded = (item) => {
+    return cartItems.find((i) => +i.parentId === +item.id)
+  }
+
+  const deleteCartItem = async (id) => {
+    await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)
+    setCartItems((prev) => prev.filter(item => item.id !== id))
+  }
+
   const getCartItems = async () => {
     const response = await axios.get('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart')
     setCartItems(response.data)
@@ -28,7 +59,7 @@ function App() {
 
   return (
     <div className="wrapper clear">
-      {isCartOpen && <Cart setIsCartOpen={setIsCartOpen} cartItems={cartItems} setCartItems={setCartItems}/>}
+      {isCartOpen && <Cart cartItems={cartItems} setIsCartOpen={setIsCartOpen} deleteCartItem={deleteCartItem}/>}
       <Header setIsCartOpen={setIsCartOpen}/>
       <section className="content">
         <div className="d-flex justify-between align-center">
@@ -46,7 +77,11 @@ function App() {
         </div>
         <div className="d-flex flex-wrap align-center cards">
           {items.filter(item => item.name.toLowerCase().includes(search.toLowerCase())).map((item) =>
-            <Card item={item} key={item.id} setCartItems={setCartItems}/>
+            <Card
+              key={item.id}
+              item={item}
+              isItemAdded={isItemAdded}
+              addCartItem={addCartItem}/>
           )}
         </div>
       </section>

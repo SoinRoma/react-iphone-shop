@@ -1,23 +1,7 @@
-import React, {useState} from 'react';
 import './Card.scss';
-import axios from "axios";
 
-const Card = ({item, setCartItems}) => {
-
-  const [isAdded, setIsAdded] = useState(false)
-
-  const handle = () => {
-    setIsAdded((prevValue) => {
-      if (prevValue) {
-        axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${item.id}`)
-        setCartItems((prev) => [...prev.filter(i => i.id !== item.id)])
-      } else {
-        axios.post('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart', item)
-        setCartItems((prev) => [...new Set([...prev, item])])
-      }
-      return !prevValue;
-    })
-  }
+const Card = ({item, isItemAdded, addCartItem}) => {
+  const obj = {id: item.id, parentId: item.id, name: item.name, price: item.price, imageUrl: item.imageUrl}
 
   return (
     <div className="card">
@@ -31,8 +15,8 @@ const Card = ({item, setCartItems}) => {
           <p>Цена:</p>
           <span>{item.price} руб.</span>
         </div>
-        <img className="cu-p" src={isAdded ? './svg/button-check.svg' : './svg/button-uncheck.svg'} alt="uncheck"
-             width="32" height="32" onClick={handle}/>
+        <img className="cu-p" src={isItemAdded(item) ? './svg/button-check.svg' : './svg/button-uncheck.svg'} alt="uncheck"
+             width="32" height="32" onClick={() => addCartItem(obj)}/>
       </div>
     </div>
   );
