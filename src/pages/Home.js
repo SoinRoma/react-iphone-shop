@@ -7,10 +7,10 @@ function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartIte
         <h1>{search ? `Поиск по запросу: ${search}` : 'Все смартфоны'}</h1>
         <div className="search-block d-flex align-center">
           <label htmlFor="search-input" className="d-flex align-center cu-p">
-            <img src="./react-iphone-shop/svg/search.svg" alt="search"/>
+            <img src="./svg/search.svg" alt="search"/>
           </label>
           {search &&
-          <img src="./react-iphone-shop/svg/close.svg" alt="close" className="clear cu-p" onClick={() => setSearch('')}/>
+          <img src="./svg/close.svg" alt="close" className="clear cu-p" onClick={() => setSearch('')}/>
           }
           <input type="text" placeholder="Поиск..." id="search-input" value={search}
                  onChange={(e) => setSearch(e.target.value)}/>

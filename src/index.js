@@ -5,6 +5,6 @@ import App from './App';
 import 'base-min-css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Router basename="/"><App /></Router>);
+root.render(<Router><App /></Router>);
 
 
