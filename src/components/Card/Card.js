@@ -23,7 +23,7 @@ const Card = ({item, cartItems, setCartItems}) => {
         <img src="./svg/heard-unlike.svg" alt="unlike"/>
       </div>
       <img src={item.imageUrl} alt="sneaker1" width="133"/>
-      <h4>{item.title}</h4>
+      <h4>{item.name}</h4>
       <div className="d-flex justify-between align-center">
         <div className="card-price">
           <p>Цена:</p>

@@ -30,6 +30,15 @@ body {
     border-radius: 10px;
     padding: 14px 18px;
     max-width: 250px;
+    position: relative;
+
+    .clear {
+      position: absolute;
+      top: 14px;
+      width: 18px;
+      height: 18px;
+      right: 15px;
+    }
 
     input {
       border: none;
