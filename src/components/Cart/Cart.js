@@ -1,9 +1,11 @@
+import {useContext} from "react"
+import {AppContext} from "../../context"
 import './Cart.scss'
 
-const Cart = ({cartItems, setIsCartOpen, deleteCartItem}) => {
-
+const Cart = ({deleteCartItem}) => {
+  const {cartItems,isCartOpen, setIsCartOpen} = useContext(AppContext)
   return (
-    <div className="overlay">
+    <div className={`overlay ${!isCartOpen && 'display-none-cart'}`}>
       <div className="drawer d-flex flex-column">
         <div className="drawer-top d-flex align-center justify-between">
           <h3>Корзина</h3>
@@ -59,7 +61,7 @@ const Cart = ({cartItems, setIsCartOpen, deleteCartItem}) => {
         }
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Cart;
+export default Cart

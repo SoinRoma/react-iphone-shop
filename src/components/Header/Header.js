@@ -1,7 +1,10 @@
-import './Header.scss'
+import {useContext} from "react"
 import {Link} from "react-router-dom"
+import './Header.scss'
+import {AppContext} from "../../context"
 
-const Header = ({setIsCartOpen}) => {
+const Header = () => {
+    const {setIsCartOpen} = useContext(AppContext)
     return (
         <header className="d-flex justify-between align-center">
             <Link to="/">

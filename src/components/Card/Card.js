@@ -1,6 +1,9 @@
+import {useContext} from "react"
+import {AppContext} from "../../context"
 import './Card.scss'
 
-const Card = ({item, isItemAdded, isItemFavorite, toggleFavorite, addCartItem}) => {
+const Card = ({item}) => {
+  const {addCartItem, isItemAdded, toggleFavorite, isItemFavorite} = useContext(AppContext)
   const obj = {id: item.id, parentId: item.id, name: item.name, price: item.price, imageUrl: item.imageUrl}
 
   return (

@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import {AppContext} from "../context"
 import Card from "../components/Card/Card"
 
-function Favorites({isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
+function Favorites() {
   const {favorites} = useContext(AppContext)
 
   return (
@@ -17,15 +17,7 @@ function Favorites({isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
       <div>
         {favorites.length ?
           <div className="d-flex flex-wrap align-center cards">
-            {favorites.map((item) =>
-            <Card
-              key={item.id}
-              item={item}
-              isItemAdded={isItemAdded}
-              isItemFavorite={isItemFavorite}
-              toggleFavorite={toggleFavorite}
-              addCartItem={addCartItem}/>
-            )}
+            {favorites.map((item) => <Card key={item.id} item={item}/>)}
           </div>
           :
           <div className="d-flex flex-column justify-center align-center mt-50">

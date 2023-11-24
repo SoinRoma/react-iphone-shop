@@ -15,7 +15,6 @@ function App() {
   const [cartItems, setCartItems] = useState([])
   const [favorites, setFavorites] = useState([])
   const [orders, setOrders] = useState([])
-  const [search, setSearch] = useState('')
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -99,25 +98,26 @@ function App() {
   }, [])
 
   return (
-    <AppContext.Provider value={{items, cartItems, favorites, orders}}>
+    <AppContext.Provider
+      value={{
+        items,
+        cartItems,
+        favorites,
+        orders,
+        isLoading,
+        isCartOpen,
+        setIsCartOpen,
+        addCartItem,
+        isItemAdded,
+        toggleFavorite,
+        isItemFavorite
+      }}>
       <div className="wrapper clear">
-        {isCartOpen && <Cart cartItems={cartItems} setIsCartOpen={setIsCartOpen} deleteCartItem={deleteCartItem}/>}
-        <Header setIsCartOpen={setIsCartOpen}/>
+        <Cart deleteCartItem={deleteCartItem}/>
+        <Header/>
         <Routes>
-          <Route path="/" element={<Home
-            isItemAdded={isItemAdded}
-            isItemFavorite={isItemFavorite}
-            addCartItem={addCartItem}
-            toggleFavorite={toggleFavorite}
-            isLoading={isLoading}
-            search={search}
-            setSearch={setSearch}/>}/>
-          <Route path="/favorites" element={<Favorites
-            isItemAdded={isItemAdded}
-            isItemFavorite={isItemFavorite}
-            addCartItem={addCartItem}
-            toggleFavorite={toggleFavorite}
-          />}/>
+          <Route path="/" element={<Home/>}/>
+          <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/order" element={<Order/>}/>
         </Routes>
       </div>
