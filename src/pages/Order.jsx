@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import Card from "../components/Card/Card"
 import {AppContext} from "../context"
 
-function Order({isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
+function Order() {
   const {orders} = useContext(AppContext)
 
   return (
@@ -16,15 +16,14 @@ function Order({isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
       </div>
       <div>
         {orders.length ?
-          <div className="d-flex flex-wrap align-center cards">
-            {orders.map((item) =>
-            <Card
-              key={item.id}
-              item={item}
-              isItemAdded={isItemAdded}
-              isItemFavorite={isItemFavorite}
-              toggleFavorite={toggleFavorite}
-              addCartItem={addCartItem}/>
+          <div className="cards">
+            {orders.map((order) =>
+              <div key={order.id}>
+                <p>Заказ № {order.id} за {new Date(order.id).getDate()}.{new Date(order.id).getMonth()}.{new Date(order.id).getFullYear()}</p>
+                <div className="d-flex flex-wrap align-center">
+                  {order.items.map(item => <Card key={item.id} item={item}/>)}
+                </div>
+              </div>
             )}
           </div>
           :

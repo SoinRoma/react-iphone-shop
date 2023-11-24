@@ -1,15 +1,17 @@
 import {useContext} from "react"
 import {AppContext} from "../../context"
 import './Cart.scss'
+import Info from "../Info/Info"
 
 const Cart = ({deleteCartItem}) => {
-  const {cartItems,isCartOpen, setIsCartOpen} = useContext(AppContext)
+  const {cartItems, isCartOpen, isOrder, orderItems, closeCart, isDisable} = useContext(AppContext)
+
   return (
     <div className={`overlay ${!isCartOpen && 'display-none-cart'}`}>
       <div className="drawer d-flex flex-column">
         <div className="drawer-top d-flex align-center justify-between">
           <h3>Корзина</h3>
-          <button className="cu-p" onClick={() => setIsCartOpen(false)}>
+          <button className="cu-p" onClick={closeCart}>
             <img src="./svg/close.svg" alt="close"/>
           </button>
         </div>
@@ -41,7 +43,7 @@ const Cart = ({deleteCartItem}) => {
                     <b>1074 руб.</b>
                   </li>
                 </ul>
-                <button>
+                <button onClick={orderItems} disabled={isDisable} className="greenButton">
                   <span>Оформить заказ</span>
                   <img src="./svg/arrow.svg" alt="arrow"/>
                 </button>
@@ -49,15 +51,10 @@ const Cart = ({deleteCartItem}) => {
             </div>
           )
           :
-          <div className="cartEmpty d-flex align-center justify-center flex-column flex">
-            <img className="mb-20" width="120px" src="./images/empty-cart.jpg" alt="Empty"/>
-            <h2>Корзина пустая</h2>
-            <p className="opacity-6">Добавьте хотя бы один товар!</p>
-            <button className="greenButton" onClick={() => setIsCartOpen(false)}>
-              <img src="./svg/arrow.svg" alt="Arrow"/>
-              Вернуться назад
-            </button>
-          </div>
+          <Info
+            title={isOrder ? 'Заказ оформлен!' : 'Корзина пустая'}
+            description={isOrder ? 'Ваш заказ скоро будет передан курьерской доставке' : 'Добавьте хотя бы один товар!'}
+            img={isOrder ? 'order.png' : 'empty-cart.jpg'}/>
         }
       </div>
     </div>

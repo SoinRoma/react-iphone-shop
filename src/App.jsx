@@ -16,7 +16,9 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [orders, setOrders] = useState([])
   const [isCartOpen, setIsCartOpen] = useState(false)
+  const [isOrder, setIsOrder] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [isDisable, setIsDisable] = useState(false)
 
   const getItems = async () => {
     try {
@@ -92,6 +94,28 @@ function App() {
     return favorites.find((item) => +item.id === +obj.id)
   }
 
+  const closeCart = () => {
+    setIsCartOpen(false)
+    setIsOrder(false)
+  }
+
+  const orderItems = async () => {
+    try {
+      setIsDisable(true)
+      setOrders((prev) => [...prev, {id: Date.now(), items: [...cartItems]}])
+      for (let i = 0; i < cartItems.length; i++) {
+        const id = cartItems[i].id
+        await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)
+        await new Promise(resolve => setTimeout(resolve, 500))
+      }
+      setCartItems([])
+      setIsOrder(true)
+      setIsDisable(false)
+    } catch (e) {
+      alert(`Не удалось заказать товары. Ошибка: ${e}`)
+    }
+  }
+
   useEffect(() => {
     getItems()
     getCartItems()
@@ -107,10 +131,14 @@ function App() {
         isLoading,
         isCartOpen,
         setIsCartOpen,
+        isOrder,
+        isDisable,
         addCartItem,
         isItemAdded,
         toggleFavorite,
-        isItemFavorite
+        isItemFavorite,
+        orderItems,
+        closeCart
       }}>
       <div className="wrapper clear">
         <Cart deleteCartItem={deleteCartItem}/>

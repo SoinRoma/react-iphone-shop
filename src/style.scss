@@ -74,6 +74,11 @@ body {
   color: white !important;
   cursor: pointer;
 
+  &:disabled{
+    background: #58634b !important;
+    cursor: default !important;
+  }
+
   &:hover {
     img {
       transform: rotate(180deg) translateX(3px);
