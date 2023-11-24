@@ -6,7 +6,7 @@ function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartIte
   const renderItems = () => {
     const filteredItems = items.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
     if (isLoading) {
-      return [...Array(20)].map((item, index) => (<CardLoading key={index}/>))
+      return [...Array(12)].map((item, index) => (<CardLoading key={index}/>))
     } else {
       return filteredItems.map((item) => (
         <Card

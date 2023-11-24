@@ -7,7 +7,7 @@ import Header from "./components/Header/Header"
 import Cart from "./components/Cart/Cart"
 import Home from "./pages/Home"
 import Favorites from "./pages/Favorites"
-import Order from "./pages/Order";
+import Order from "./pages/Order"
 
 function App() {
   const [items, setItems] = useState([])
