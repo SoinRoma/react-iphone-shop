@@ -25,8 +25,9 @@ function App() {
       const response = await axios.get('https://655de51b9f1e1093c59a1965.mockapi.io/api/items')
       setItems(response.data)
       setIsLoading(false)
-    } catch (e) {
-      alert(`Не удалось получить данные товаров. Ошибка: ${e}`)
+    } catch (err) {
+      alert(`Не удалось получить данные товаров. Ошибка: ${err}`)
+      console.error(err)
     }
   }
 
@@ -36,8 +37,9 @@ function App() {
       try {
         await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${findItem.id}`)
         setCartItems((prev) => prev.filter((item) => +item.parentId !== +obj.id))
-      } catch (e) {
-        alert(`Не удалось удалить данные корзины. Ошибка: ${e}`)
+      } catch (err) {
+        alert(`Не удалось удалить данные корзины. Ошибка: ${err}`)
+        console.error(err)
       }
     } else {
       try {
@@ -54,8 +56,9 @@ function App() {
             return item
           })
         )
-      } catch (e) {
-        alert(`Не удалось добавить данные в корзину. Ошибка: ${e}`)
+      } catch (err) {
+        alert(`Не удалось добавить данные в корзину. Ошибка: ${err}`)
+        console.error(err)
       }
     }
   }
@@ -64,8 +67,9 @@ function App() {
     try {
       await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)
       setCartItems((prev) => prev.filter(item => item.id !== id))
-    } catch (e) {
-      alert(`Не удалось удалить данные корзины. Ошибка: ${e}`)
+    } catch (err) {
+      alert(`Не удалось удалить данные корзины. Ошибка: ${err}`)
+      console.error(err)
     }
   }
 
@@ -73,8 +77,9 @@ function App() {
     try {
       const response = await axios.get('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart')
       setCartItems(response.data)
-    } catch (e) {
-      alert(`Не удалось получить данные корзины. Ошибка: ${e}`)
+    } catch (err) {
+      alert(`Не удалось получить данные корзины. Ошибка: ${err}`)
+      console.error(err)
     }
   }
 
@@ -107,8 +112,9 @@ function App() {
       setCartItems([])
       setIsOrder(true)
       setIsDisable(false)
-    } catch (e) {
-      alert(`Не удалось заказать товары. Ошибка: ${e}`)
+    } catch (err) {
+      alert(`Не удалось заказать товары. Ошибка: ${err}`)
+      console.error(err)
     }
   }
 
