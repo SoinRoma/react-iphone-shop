@@ -18,9 +18,9 @@ function Home() {
 
   return (
     <section className="content">
-      <div className="d-flex justify-between align-center">
-        <h1>{search ? `Поиск по запросу: ${search}` : 'Все смартфоны'}</h1>
-        <div className="search-block d-flex align-center">
+      <div className="d-flex justify-between align-center flex-wrap">
+        <h1 className="mb-25">{search ? `Поиск по запросу: ${search}` : 'Все смартфоны'}</h1>
+        <div className="search-block d-flex align-center mb-5">
           <label htmlFor="search-input" className="d-flex align-center cu-p">
             <img src="./svg/search.svg" alt="search"/>
           </label>

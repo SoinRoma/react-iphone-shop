@@ -6,9 +6,9 @@ import {AppContext} from "../../context"
 const Header = () => {
     const {totalPrice, setIsCartOpen} = useContext(AppContext)
     return (
-        <header className="d-flex justify-between align-center">
+        <header className="d-flex justify-between align-center flex-wrap">
             <Link to="/">
-                <div className="d-flex align-center">
+                <div className="d-flex align-center mb-20">
                     <img src="./images/logo.png" alt="logo" width="40" height="40"/>
                     <div className="header-info">
                         <h3 className="text-uppercase">Iphone Shop</h3>
