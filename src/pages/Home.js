@@ -1,7 +1,10 @@
+import {useContext} from "react"
 import Card from "../components/Card/Card"
 import CardLoading from "../components/CardLoading/CardLoading"
+import {AppContext} from "../context"
 
-function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartItem, toggleFavorite, isLoading}) {
+function Home({search, setSearch, isItemAdded, isItemFavorite, addCartItem, toggleFavorite, isLoading}) {
+  const {items} = useContext(AppContext)
 
   const renderItems = () => {
     const filteredItems = items.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
@@ -18,7 +21,6 @@ function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartIte
           addCartItem={addCartItem}/>
       ))
     }
-
   }
 
   return (

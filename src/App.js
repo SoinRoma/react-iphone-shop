@@ -8,6 +8,7 @@ import Cart from "./components/Cart/Cart"
 import Home from "./pages/Home"
 import Favorites from "./pages/Favorites"
 import Order from "./pages/Order"
+import {AppContext} from "./context"
 
 function App() {
   const [items, setItems] = useState([])
@@ -98,29 +99,29 @@ function App() {
   }, [])
 
   return (
-    <div className="wrapper clear">
-      {isCartOpen && <Cart cartItems={cartItems} setIsCartOpen={setIsCartOpen} deleteCartItem={deleteCartItem}/>}
-      <Header setIsCartOpen={setIsCartOpen}/>
-      <Routes>
-        <Route path="/" element={<Home
-          items={items}
-          isItemAdded={isItemAdded}
-          isItemFavorite={isItemFavorite}
-          addCartItem={addCartItem}
-          toggleFavorite={toggleFavorite}
-          isLoading={isLoading}
-          search={search}
-          setSearch={setSearch}/>}/>
-        <Route path="/favorites" element={<Favorites
-          orders={orders}
-          isItemAdded={isItemAdded}
-          isItemFavorite={isItemFavorite}
-          addCartItem={addCartItem}
-          toggleFavorite={toggleFavorite}
-        />}/>
-        <Route path="/order" element={<Order/>}/>
-      </Routes>
-    </div>
+    <AppContext.Provider value={{items, cartItems, favorites, orders}}>
+      <div className="wrapper clear">
+        {isCartOpen && <Cart cartItems={cartItems} setIsCartOpen={setIsCartOpen} deleteCartItem={deleteCartItem}/>}
+        <Header setIsCartOpen={setIsCartOpen}/>
+        <Routes>
+          <Route path="/" element={<Home
+            isItemAdded={isItemAdded}
+            isItemFavorite={isItemFavorite}
+            addCartItem={addCartItem}
+            toggleFavorite={toggleFavorite}
+            isLoading={isLoading}
+            search={search}
+            setSearch={setSearch}/>}/>
+          <Route path="/favorites" element={<Favorites
+            isItemAdded={isItemAdded}
+            isItemFavorite={isItemFavorite}
+            addCartItem={addCartItem}
+            toggleFavorite={toggleFavorite}
+          />}/>
+          <Route path="/order" element={<Order/>}/>
+        </Routes>
+      </div>
+    </AppContext.Provider>
   )
 }
 

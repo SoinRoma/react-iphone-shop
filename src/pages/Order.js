@@ -1,7 +1,11 @@
-import Card from "../components/Card/Card"
+import {useContext} from "react"
 import {Link} from "react-router-dom"
+import Card from "../components/Card/Card"
+import {AppContext} from "../context"
 
-function Order({orders=[], isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
+function Order({isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
+  const {orders} = useContext(AppContext)
+
   return (
     <section className="content">
       <div className="d-flex align-center">

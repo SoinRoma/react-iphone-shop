@@ -1,7 +1,11 @@
-import Card from "../components/Card/Card"
+import {useContext} from "react"
 import {Link} from "react-router-dom"
+import {AppContext} from "../context"
+import Card from "../components/Card/Card"
 
-function Favorites({favorites, isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
+function Favorites({isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
+  const {favorites} = useContext(AppContext)
+
   return (
     <section className="content">
       <div className="d-flex align-center">
