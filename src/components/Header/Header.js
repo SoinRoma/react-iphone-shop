@@ -1,6 +1,5 @@
-import React from 'react';
-import './Header.scss';
-import {Link} from "react-router-dom";
+import './Header.scss'
+import {Link} from "react-router-dom"
 
 const Header = ({setIsCartOpen}) => {
     return (
@@ -31,7 +30,7 @@ const Header = ({setIsCartOpen}) => {
                 </li>
             </ul>
         </header>
-    );
-};
+    )
+}
 
-export default Header;
+export default Header

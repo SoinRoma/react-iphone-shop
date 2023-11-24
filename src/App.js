@@ -1,11 +1,12 @@
-import './style.scss';
-import axios from 'axios'
+import {useEffect, useState} from "react"
 import {Routes, Route} from 'react-router-dom'
-import Header from "./components/Header/Header";
-import Cart from "./components/Cart/Cart";
-import {useEffect, useState} from "react";
-import Home from "./pages/Home";
-import Favorites from "./pages/Favorites";
+import axios from 'axios'
+
+import './style.scss'
+import Header from "./components/Header/Header"
+import Cart from "./components/Cart/Cart"
+import Home from "./pages/Home"
+import Favorites from "./pages/Favorites"
 
 function App() {
   const [items, setItems] = useState([])
@@ -26,17 +27,17 @@ function App() {
   }
 
   const addCartItem = async (obj) => {
-    const findItem = cartItems.find((item) => +item.parentId === +obj.id);
+    const findItem = cartItems.find((item) => +item.parentId === +obj.id)
     if (findItem) {
       try {
-        await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${findItem.id}`);
-        setCartItems((prev) => prev.filter((item) => +item.parentId !== +obj.id));
+        await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${findItem.id}`)
+        setCartItems((prev) => prev.filter((item) => +item.parentId !== +obj.id))
       } catch (e) {
         alert(`Не удалось удалить данные корзины. Ошибка: ${e}`)
       }
     } else {
       try {
-        setCartItems((prev) => [...prev, obj]);
+        setCartItems((prev) => [...prev, obj])
         const {data} = await axios.post('https://655de51b9f1e1093c59a1965.mockapi.io/api/cart', obj)
         setCartItems((prev) =>
           prev.map((item) => {
@@ -44,11 +45,11 @@ function App() {
               return {
                 ...item,
                 id: data.id,
-              };
+              }
             }
-            return item;
+            return item
           })
-        );
+        )
       } catch (e) {
         alert(`Не удалось добавить данные в корзину. Ошибка: ${e}`)
       }
@@ -117,7 +118,7 @@ function App() {
         />}/>
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

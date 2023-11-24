@@ -1,23 +1,17 @@
-import Card from "../components/Card/Card";
+import Card from "../components/Card/Card"
+import CardLoading from "../components/CardLoading/CardLoading"
 
 function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartItem, toggleFavorite, isLoading}) {
 
   const renderItems = () => {
     const filteredItems = items.filter(item => item.name.toLowerCase().includes(search.toLowerCase()))
     if (isLoading) {
-      return [...Array(8)].map((item, index) => (
-        <Card
-          key={index}
-          item={item}
-          isLoading={isLoading}
-          />
-      ))
+      return [...Array(20)].map(() => (<CardLoading/>))
     } else {
       return filteredItems.map((item) => (
         <Card
           key={item.id}
           item={item}
-          isLoading={isLoading}
           isItemAdded={isItemAdded}
           isItemFavorite={isItemFavorite}
           toggleFavorite={toggleFavorite}
@@ -46,7 +40,7 @@ function Home({items, search, setSearch, isItemAdded, isItemFavorite, addCartIte
         {renderItems()}
       </div>
     </section>
-  );
+  )
 }
 
-export default Home;
+export default Home

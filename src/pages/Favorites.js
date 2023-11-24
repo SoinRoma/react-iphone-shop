@@ -1,4 +1,4 @@
-import Card from "../components/Card/Card";
+import Card from "../components/Card/Card"
 
 function Favorites({favorites, isItemAdded, isItemFavorite, addCartItem, toggleFavorite}) {
   return (
@@ -22,7 +22,7 @@ function Favorites({favorites, isItemAdded, isItemFavorite, addCartItem, toggleF
         }
       </div>
     </section>
-  );
+  )
 }
 
-export default Favorites;
+export default Favorites
