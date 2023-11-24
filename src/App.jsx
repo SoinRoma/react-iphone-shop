@@ -102,7 +102,11 @@ function App() {
   const orderItems = async () => {
     try {
       setIsDisable(true)
-      setOrders((prev) => [...prev, {id: Date.now(), totalPrice: totalPrice(), items: [...cartItems]}])
+      setOrders((prev) => [...prev, {
+        id: Date.now(),
+        totalPrice: totalPrice() + totalPrice() * 0.05,
+        items: [...cartItems]
+      }])
       for (let i = 0; i < cartItems.length; i++) {
         const id = cartItems[i].id
         await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)

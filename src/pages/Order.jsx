@@ -22,7 +22,7 @@ function Order() {
             {orders.map((order) =>
               <div key={order.id}>
                 <p className="order-name">{getNameOrder(order)}</p>
-                <p className="order-price">Общая сумма: {order.totalPrice} руб.</p>
+                <p className="order-price">Общая сумма с налогом: {order.totalPrice} руб.</p>
                 <div className="d-flex flex-wrap align-center">
                   {order.items.map(item => <Card key={item.id} item={item}/>)}
                 </div>
