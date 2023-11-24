@@ -7,7 +7,7 @@ const Cart = ({deleteCartItem}) => {
   const {cartItems, isCartOpen, isOrder, orderItems, totalPrice, closeCart, isDisable} = useContext(AppContext)
 
   return (
-    <div className={`overlay ${!isCartOpen && 'display-none-cart'}`}>
+    <div className={`overlay ${isCartOpen && 'display-none-cart'}`}>
       <div className="drawer d-flex flex-column">
         <div className="drawer-top d-flex align-center justify-between">
           <h3>Корзина</h3>
