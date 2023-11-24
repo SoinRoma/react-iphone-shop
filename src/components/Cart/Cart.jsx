@@ -14,7 +14,7 @@ const Cart = ({deleteCartItem}) => {
           </button>
         </div>
         {cartItems.length ? (
-            <div>
+            <div className="content-items">
               <div className="items">
                 {cartItems.map(item =>
                   <div className="cart-item d-flex justify-between align-center" key={item.id}>
