@@ -1,16 +1,18 @@
 import {useContext} from "react"
 import {AppContext} from "../../context"
 import './Card.scss'
+import {useCard} from "../../hooks/useCard"
 
-const Card = ({item}) => {
-  const {addCartItem, isItemAdded, toggleFavorite, isItemFavorite} = useContext(AppContext)
+const Card = ({item, isShowBtn = true}) => {
+  const {addCartItem, toggleFavorite} = useContext(AppContext)
+  const {isItemAdded, isItemFavorite} = useCard()
   const obj = {id: item.id, parentId: item.id, name: item.name, price: item.price, imageUrl: item.imageUrl}
 
   return (
     <div className="card">
-      <div className="favourite" onClick={() => toggleFavorite(item)}>
+      {isShowBtn && <div className="favourite" onClick={() => toggleFavorite(item)}>
         <img src={isItemFavorite(item) ? './svg/like.svg' : './svg/unlike.svg'} alt="like"/>
-      </div>
+      </div>}
       <img src={item.imageUrl} alt="sneaker1" width="133"/>
       <h4>{item.name}</h4>
       <div className="d-flex justify-between align-center">
@@ -18,9 +20,9 @@ const Card = ({item}) => {
           <p>Цена:</p>
           <span>{item.price} руб.</span>
         </div>
+        {isShowBtn &&
         <img className="cu-p" src={isItemAdded(item) ? './svg/button-check.svg' : './svg/button-uncheck.svg'}
-             alt="uncheck"
-             width="32" height="32" onClick={() => addCartItem(obj)}/>
+             alt="uncheck" width="32" height="32" onClick={() => addCartItem(obj)}/>}
       </div>
     </div>
   )

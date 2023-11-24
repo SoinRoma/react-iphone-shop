@@ -1,4 +1,4 @@
-import {useContext, useEffect} from "react"
+import {useContext} from "react"
 import {Link} from "react-router-dom"
 import Card from "../components/Card/Card"
 import {AppContext} from "../context"
@@ -24,7 +24,7 @@ function Order() {
                 <p className="order-name">{getNameOrder(order)}</p>
                 <p className="order-price">Общая сумма с налогом: {order.totalPrice} руб.</p>
                 <div className="d-flex flex-wrap align-center">
-                  {order.items.map(item => <Card key={item.id} item={item}/>)}
+                  {order.items.map(item => <Card key={item.id} item={item} isShowBtn={false}/>)}
                 </div>
                 <hr/>
               </div>

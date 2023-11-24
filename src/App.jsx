@@ -60,10 +60,6 @@ function App() {
     }
   }
 
-  const isItemAdded = (obj) => {
-    return cartItems.find((item) => +item.parentId === +obj.id)
-  }
-
   const deleteCartItem = async (id) => {
     try {
       await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)
@@ -88,10 +84,6 @@ function App() {
     } else {
       setFavorites((prev) => [...prev, obj])
     }
-  }
-
-  const isItemFavorite = (obj) => {
-    return favorites.find((item) => +item.id === +obj.id)
   }
 
   const closeCart = () => {
@@ -142,9 +134,7 @@ function App() {
         isOrder,
         isDisable,
         addCartItem,
-        isItemAdded,
         toggleFavorite,
-        isItemFavorite,
         orderItems,
         closeCart,
         totalPrice,
