@@ -102,7 +102,7 @@ function App() {
   const orderItems = async () => {
     try {
       setIsDisable(true)
-      setOrders((prev) => [...prev, {id: Date.now(), items: [...cartItems]}])
+      setOrders((prev) => [...prev, {id: Date.now(), totalPrice: totalPrice(), items: [...cartItems]}])
       for (let i = 0; i < cartItems.length; i++) {
         const id = cartItems[i].id
         await axios.delete(`https://655de51b9f1e1093c59a1965.mockapi.io/api/cart/${id}`)
@@ -114,6 +114,10 @@ function App() {
     } catch (e) {
       alert(`Не удалось заказать товары. Ошибка: ${e}`)
     }
+  }
+
+  const totalPrice = () => {
+    return cartItems.reduce((sum, obj) => +obj.price + sum, 0)
   }
 
   useEffect(() => {
@@ -138,7 +142,8 @@ function App() {
         toggleFavorite,
         isItemFavorite,
         orderItems,
-        closeCart
+        closeCart,
+        totalPrice,
       }}>
       <div className="wrapper clear">
         <Cart deleteCartItem={deleteCartItem}/>

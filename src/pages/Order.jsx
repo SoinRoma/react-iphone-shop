@@ -1,11 +1,13 @@
-import {useContext} from "react"
+import {useContext, useEffect} from "react"
 import {Link} from "react-router-dom"
 import Card from "../components/Card/Card"
 import {AppContext} from "../context"
 
 function Order() {
   const {orders} = useContext(AppContext)
-
+  const getNameOrder = (order) => {
+    return `Заказ № ${order.id} за ${new Date(order.id).getDate()}.${new Date(order.id).getMonth()}.${new Date(order.id).getFullYear()}`
+  }
   return (
     <section className="content">
       <div className="d-flex align-center">
@@ -19,10 +21,12 @@ function Order() {
           <div className="cards">
             {orders.map((order) =>
               <div key={order.id}>
-                <p>Заказ № {order.id} за {new Date(order.id).getDate()}.{new Date(order.id).getMonth()}.{new Date(order.id).getFullYear()}</p>
+                <p className="order-name">{getNameOrder(order)}</p>
+                <p className="order-price">Общая сумма: {order.totalPrice} руб.</p>
                 <div className="d-flex flex-wrap align-center">
                   {order.items.map(item => <Card key={item.id} item={item}/>)}
                 </div>
+                <hr/>
               </div>
             )}
           </div>

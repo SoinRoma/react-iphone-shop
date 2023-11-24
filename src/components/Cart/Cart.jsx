@@ -4,7 +4,7 @@ import './Cart.scss'
 import Info from "../Info/Info"
 
 const Cart = ({deleteCartItem}) => {
-  const {cartItems, isCartOpen, isOrder, orderItems, closeCart, isDisable} = useContext(AppContext)
+  const {cartItems, isCartOpen, isOrder, orderItems, totalPrice, closeCart, isDisable} = useContext(AppContext)
 
   return (
     <div className={`overlay ${!isCartOpen && 'display-none-cart'}`}>
@@ -35,12 +35,12 @@ const Cart = ({deleteCartItem}) => {
                   <li className="d-flex justify-between align-end">
                     <p>Итого:</p>
                     <div/>
-                    <b>21 498 руб.</b>
+                    <b>{totalPrice() > 0 ? `${totalPrice()} руб.` : ''}</b>
                   </li>
                   <li className="d-flex justify-between align-end">
                     <p>Налог 5%:</p>
                     <div/>
-                    <b>1074 руб.</b>
+                    <b>{totalPrice() > 0 ? `${totalPrice() * 0.05} руб.` : ''}</b>
                   </li>
                 </ul>
                 <button onClick={orderItems} disabled={isDisable} className="greenButton">

@@ -4,7 +4,7 @@ import './Header.scss'
 import {AppContext} from "../../context"
 
 const Header = () => {
-    const {setIsCartOpen} = useContext(AppContext)
+    const {totalPrice, setIsCartOpen} = useContext(AppContext)
     return (
         <header className="d-flex justify-between align-center">
             <Link to="/">
@@ -19,7 +19,7 @@ const Header = () => {
             <ul className="header-right d-flex">
                 <li className="d-flex align-center cu-p" onClick={()=> setIsCartOpen(true)}>
                     <img src="./svg/cart.svg" alt="cart"/>
-                    <span>1205 руб.</span>
+                    <span>{totalPrice() > 0 ? `${totalPrice()} руб.` : ''}</span>
                 </li>
                 <li className="d-flex align-center">
                     <Link to="/favorites">
