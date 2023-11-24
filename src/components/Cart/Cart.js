@@ -1,5 +1,4 @@
-import React from 'react';
-import './Cart.scss';
+import './Cart.scss'
 
 const Cart = ({cartItems, setIsCartOpen, deleteCartItem}) => {
 

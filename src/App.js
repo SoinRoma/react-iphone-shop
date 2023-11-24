@@ -7,11 +7,13 @@ import Header from "./components/Header/Header"
 import Cart from "./components/Cart/Cart"
 import Home from "./pages/Home"
 import Favorites from "./pages/Favorites"
+import Order from "./pages/Order";
 
 function App() {
   const [items, setItems] = useState([])
   const [cartItems, setCartItems] = useState([])
   const [favorites, setFavorites] = useState([])
+  const [orders, setOrders] = useState([])
   const [search, setSearch] = useState('')
   const [isCartOpen, setIsCartOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -110,12 +112,13 @@ function App() {
           search={search}
           setSearch={setSearch}/>}/>
         <Route path="/favorites" element={<Favorites
-          favorites={favorites}
+          orders={orders}
           isItemAdded={isItemAdded}
           isItemFavorite={isItemFavorite}
           addCartItem={addCartItem}
           toggleFavorite={toggleFavorite}
         />}/>
+        <Route path="/order" element={<Order/>}/>
       </Routes>
     </div>
   )

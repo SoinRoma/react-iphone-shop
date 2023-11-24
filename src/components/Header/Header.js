@@ -24,9 +24,9 @@ const Header = ({setIsCartOpen}) => {
                     </Link>
                 </li>
                 <li className="d-flex align-center">
-                    <a href="/">
+                    <Link to="/order">
                         <img src="./svg/user.svg" alt="user"/>
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </header>
